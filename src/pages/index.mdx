@@ -43,7 +43,7 @@ createRootStore(new RootStore(), {
 
 서버사이드에서 hydration된 스토어들을 RootStoreProvider 에 프롭스로 전달해줍니다.  MyApp의 pageProps에서 hydrationData와 컴포넌트의 props 를 구분하기 위해 `useHydrateProps` 훅을 사용합니다.
 
-```tsx
+```tsx {6,9,11,13}
 import type { AppProps } from "next/app";
 import { RootStoreProvider } from "@next-mobx-store/core";
 import { useHydrateProps } from "@next-mobx-store/hooks";
@@ -63,7 +63,7 @@ export default function App({ Component, ...rest }: AppProps) {
 
 여러 페이지의 하위 컴포넌트내부에서 RootStore 에 접근해야하는 경우 `useRootStore` 훅을 사용해주세요.
 
-```tsx
+```tsx {4}
 import { useRootStore } from "@next-mobx-store/hooks";
 
 export default function SomeComponent() {

@@ -1,20 +1,17 @@
 import React from 'react'
 import { DocsThemeConfig, useConfig } from 'nextra-theme-docs'
-
+import Logo from './src/components/Logo';
 const config: DocsThemeConfig = {
-	logo: <span>next-mobx-store</span>,
+	logo: Logo,
 	project: {
-		link: 'https://github.com/shuding/nextra-docs-template',
+		link: 'https://github.com/casentino/next-mobx-store',
 	},
-	chat: {
-		link: 'https://discord.com',
-	},
-	docsRepositoryBase: 'https://google.com/shuding/nextra-docs-template',
 	footer: {
-		text: 'Nextra Docs Template',
+		component: null
 	},
 	toc: {
 		float: false,
+		backToTop: true
 	},
 	feedback: {
 		content: null
