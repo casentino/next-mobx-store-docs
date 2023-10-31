@@ -23,28 +23,14 @@ createRootStore(storeInstance, config?);
 `pageProps`의 `hydrationData`를 사용하여 RootStore에 hydrate함수를 호출해줍니다.
 
 ```typescript
-const { store, ...other } = useHydrateProps(rest);
+const { store, props } = useHydrateProps(pageProps);
 ```
 
 <font size="3">**Parameters**</font><br />
-- *...rest*: _app.tsx에서 AppProps의 Component를 제외한 나머지를 매개변수로 받습니다.
+- *pageProps*: _app.tsx에서 AppInitialProps의 pageProps를 사용합니다.
 
 <font size="3">**Return**</font><br />
 hydration된 store 인스턴스와 Component 에 넘겨줄 props를 반환합니다.
-
-## useLocalHydrate
-
-전역 상태를 관리하는 스토어가아닌 단일페이지나 특정 도메인에서만 사용될 스토어를 hydration 해주는 훅입니다.
-`pageProps`의 `hydrationLocalStore`를 넘겨 받아 Store들의 hydrate함수를 호출해줍니다.
-```typescript
-const store = useLocalHydrateStores(props);
-```
-
-<font size="3">**Parameters**</font><br />
-- *props*: Next 페이지 컴포넌의 props를 매개변수로 받습니다. 
-
-<font size="3">**Return**</font><br />
-해당 페이지에서만 사용될 MobX Store를 반환합니다.
 
 ## useRootStore
 
@@ -69,7 +55,7 @@ function Component(props: Props) {
 
 ```tsx {2}
 function App({ Component, pageProps }: AppProps) {
-  const { store, ...props } = useHydrateProps(pageProps);
+  const { store, props } = useHydrateProps(pageProps);
   return (
     <RootStoreProvider store={store}>
       <Component {...props} />
